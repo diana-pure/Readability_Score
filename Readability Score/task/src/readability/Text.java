@@ -6,10 +6,9 @@ public class Text {
     private static final String SENTENCE_SPLIT_REGEXP = "[.!?](\\s)*";
     private static final String WORD_SPLIT_REGEXP = "(\\b|\\W)(\\s)+(\\b|\\W)*";
     private static final String CHARACTER_SPLIT_REGEXP = "\\s";
+
     private final String text;
-
     private final int sentenceNumber;
-
     private final int wordNumber;
     private final int syllableNumber;
     private final int polySyllableNumber;
@@ -50,6 +49,16 @@ public class Text {
 
     public int getCharacterNumber() {
         return characterNumber;
+    }
+
+    // L is the average number of characters per 100 words
+    public double countCharacterLParam() {
+        return (characterNumber / (float) wordNumber) * 100;
+    }
+
+    // S is the average number of sentences per 100 words.
+    public double countSentenceSParam() {
+        return (sentenceNumber / (float) wordNumber) * 100;
     }
 
     private int countSentences() {
